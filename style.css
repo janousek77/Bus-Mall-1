@@ -1,0 +1,16 @@
+body {
+
+}
+header {
+  text-align: center;
+  color: red;
+}
+p {
+  text-align: center;
+}
+img {
+  display: block;
+  float: left;
+  text-align:center;
+  margin: 150px;
+}
