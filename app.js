@@ -7,6 +7,7 @@ var img3 = document.getElementById('img3');
 var imgArr = [];
 var previousImg = [];
 var selectedImgs = [];
+var count = {};
 
 function img(name, itemPath) {
   this.name = name;
@@ -58,6 +59,19 @@ function randomImg() {
 
 randomImg();
 
+function imgTracker(selectedImgs) {
+  len = selectedImgs.length;
+  result = [];
+  obj = {};
+  for(var i = 0; i < len; i++) {
+    obj[selectedImgs[i]] = 0;
+  }
+  for (i in obj) {
+    result.push(i);
+  }
+  return result;
+};
+
 function newImages(event) {
   event.preventDefault();
   var newImage = event.target;
@@ -71,7 +85,7 @@ function newImages(event) {
     return selectedImgs;
   }
   else {
-    alert('done!');
+    imgTracker();
   }
 };
 
