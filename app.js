@@ -55,6 +55,15 @@ function randomImg() {
 
 randomImg();
 
-document.getElementById('img1').addEventListener('click', randomImg);
-document.getElementById('img2').addEventListener('click', randomImg);
-document.getElementById('img3').addEventListener('click', randomImg);
+function newImages(event) {
+  event.preventDefault();
+  var newImage = event.target;
+  var img1 = newImage.img1.click;
+  var img2 = newImage.img2.click;
+  var img3 = newImage.img3.click;
+};
+for(var i = 0; i < 25; i++){
+  img1.addEventListener('click', randomImg)[i];
+  img1.addEventListener('click', randomImg);
+  img1.addEventListener('click', randomImg);
+};
