@@ -6,6 +6,7 @@ var img3 = document.getElementById('img3');
 
 var imgArr = [];
 var previousImg = [];
+var nameArr = [];
 var totalClicks = 0;
 //this constuctor function creates objects out of the following variables
 function img(name, itemPath) {
@@ -14,6 +15,7 @@ function img(name, itemPath) {
   this.itemClick = 0;
   this.itemShown = 0;
   imgArr.push(this);
+  nameArr.push(name);
 };
 
 //these variables create new objects through the function constructor
@@ -103,3 +105,9 @@ function imgClicks() {
     ul.appendChild(li);
   }
 };
+
+var myBarChart = new Chart(ctx, {
+  type: 'horizontalBar',
+  data: data,
+  options: options
+});
