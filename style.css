@@ -12,5 +12,17 @@ img {
   display: block;
   float: left;
   text-align:center;
-  margin: 150px;
+  width: 140px;
+  height: 100px;
+  margin-left: 200px;
+}
+
+ul {
+  text-align: center;
+  margin-top: 100px;
+  list-style-type: none;
+}
+
+#main {
+
 }
