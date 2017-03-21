@@ -1,28 +1,25 @@
 body {
-
+  background-color: beige;
 }
 header {
   text-align: center;
-  color: red;
+  color: rgba(200, 0, 0, 0.9);
 }
 p {
   text-align: center;
 }
-img {
-  display: block;
-  float: left;
-  text-align:center;
-  width: 140px;
-  height: 100px;
-  margin-left: 200px;
-}
-
-ul {
-  text-align: center;
-  margin-top: 100px;
-  list-style-type: none;
-}
-
 #main {
+  display: block;
+  text-align: center;
+}
+img {
+  width: 200px;
+  height: 150px;
+  margin: 30px;
+  border: thin red solid;
+  cursor: pointer;
+}
 
+canvas* {
+  color: red;
 }
