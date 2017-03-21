@@ -1,38 +1,13 @@
 'use strict';
 
-var img1 = document.getElementById('img1');
-var img2 = document.getElementById('img2');
-var img3 = document.getElementById('img3');
-
 var imgArr = [];
-var currentImg = [];
 var previousImg = [];
 
-function img(name, source) {
+function img(name, itemPath) {
   this.name = name;
-  this.source = source;
+  this.itemPath = itemPath;
   imgArr.push(this);
 };
-
-function random() {
-  return Math.floor(Math.random() * imgArr.length);
-};
-
-function randomImg() {
-  while(currentImg.length < 3) {
-    var imgSelector = imgArr[random()];
-    if(!currentImg.includes(imgSelector) && !previousImg.includes(imgSelector)) {
-      currentImg.push(imgSelector);
-    }
-  }
-  var firstImg = imgArr[currentImg[0]].source;
-  var secondImg = imgArr[currentImg[1]].source;
-  var thirdImg = imgArr[currentImg[2]].source;
-  document.getElementById('img1').src = firstImg;
-  document.getElementById('img2').src = secondImg;
-  document.getElementById('img3').src = thirdImg;
-};
-
 var bag = new img('bag', 'assets/bag.jpg');
 var banana = new img('banana', 'assets/banana.jpg');
 var bathroom = new img('bathroom', 'assets/bathroom.jpg');
@@ -54,8 +29,32 @@ var usb = new img('usb', 'assets/usb.gif');
 var waterCan = new img('water-can', 'assets/water-can.jpg');
 var wineGlass = new img('wine-glass', 'assets/wine-glass.jpg');
 
+function random() {
+  return Math.floor(Math.random() * imgArr.length);
+};
+
+function randomImg() {
+  var currentImg = [];
+  while(currentImg.length < 3) {
+    var imgSelector = random();
+    if(!currentImg.includes(imgSelector) && !previousImg.includes(
+    imgSelector)) {
+      currentImg.push(imgSelector);
+    }
+    console.log(currentImg);
+  }
+  previousImg = currentImg;
+  var firstImg = imgArr[currentImg[0]].itemPath;
+  var secondImg = imgArr[currentImg[1]].itemPath;
+  var thirdImg = imgArr[currentImg[2]].itemPath;
+  document.getElementById('img1').src = firstImg;
+  document.getElementById('img2').src = secondImg;
+  document.getElementById('img3').src = thirdImg;
+  console.log(previousImg);
+};
+
 randomImg();
-// console.log(imgArr);
-// for(var i = 0; i < 25; i++) {
-//   imgArr[i].imgChoices();
-// };
+
+document.getElementById('img1').addEventListener('click', randomImg);
+document.getElementById('img2').addEventListener('click', randomImg);
+document.getElementById('img3').addEventListener('click', randomImg);
