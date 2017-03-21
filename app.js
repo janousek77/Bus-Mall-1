@@ -1,7 +1,12 @@
 'use strict';
 
+var img1 = document.getElementById('img1');
+var img2 = document.getElementById('img2');
+var img3 = document.getElementById('img3');
+
 var imgArr = [];
 var previousImg = [];
+var selectedImgs = [];
 
 function img(name, itemPath) {
   this.name = name;
@@ -41,7 +46,6 @@ function randomImg() {
     imgSelector)) {
       currentImg.push(imgSelector);
     }
-    console.log(currentImg);
   }
   previousImg = currentImg;
   var firstImg = imgArr[currentImg[0]].itemPath;
@@ -50,7 +54,6 @@ function randomImg() {
   document.getElementById('img1').src = firstImg;
   document.getElementById('img2').src = secondImg;
   document.getElementById('img3').src = thirdImg;
-  console.log(previousImg);
 };
 
 randomImg();
@@ -58,12 +61,20 @@ randomImg();
 function newImages(event) {
   event.preventDefault();
   var newImage = event.target;
-  var img1 = newImage.img1.click;
-  var img2 = newImage.img2.click;
-  var img3 = newImage.img3.click;
+  var img1 = newImage.img1;
+  var img2 = newImage.img2;
+  var img3 = newImage.img3;
+  if(selectedImgs.length < 4) {
+    randomImg();
+    selectedImgs.push(this);
+    console.log(selectedImgs);
+    return selectedImgs;
+  }
+  else {
+    alert('done!');
+  }
 };
-for(var i = 0; i < 25; i++){
-  img1.addEventListener('click', randomImg)[i];
-  img1.addEventListener('click', randomImg);
-  img1.addEventListener('click', randomImg);
-};
+
+img1.addEventListener('click', newImages);
+img2.addEventListener('click', newImages);
+img3.addEventListener('click', newImages);
