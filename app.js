@@ -77,7 +77,7 @@ randomImg();
 
 //newImages() is an event listener function that allows the user to click on 1 image, when an image is clicked it pushes that image into selectedImgs array and runs randomImg() function until the attempts reaches the set amount
 function newImages() {
-  if(totalClicks < 2) {
+  if(totalClicks < 24) {
     randomImg();
     totalClicks++;
     var itemIndx = this.alt;
