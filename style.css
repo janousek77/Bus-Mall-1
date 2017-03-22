@@ -1,28 +1,36 @@
 body {
-
+  background-color: lightblue;
 }
 header {
+  font-family: 'bree-serif', serif;
+  font-size: 20px;
   text-align: center;
-  color: red;
+  color: rgba(200, 0, 0, 0.9);
+  background-color: blue;
+  margin: 0px;
+}
+#imgHeader {
+  float:left;
+  width: 80px;
+  margin: 10px;
 }
 p {
   text-align: center;
+  font-family: 'Josefin-sans', sans-serif;
 }
-img {
-  display: block;
-  float: left;
-  text-align:center;
-  width: 140px;
-  height: 100px;
-  margin-left: 200px;
-}
-
-ul {
-  text-align: center;
-  margin-top: 100px;
-  list-style-type: none;
-}
-
 #main {
+  display: block;
+  text-align: center;
+}
+main img {
+  width: 200px;
+  height: 150px;
+  margin: 30px;
+  border: thin red solid;
+  cursor: pointer;
 
+}
+
+canvas* {
+  color: red;
 }

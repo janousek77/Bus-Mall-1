@@ -1,4 +1,7 @@
 'use strict';
+
+var canvas = document.getElementById('canvas');
+var ctx = canvas.getContext('2d');
 //these variable get the img elements from index.html
 var img1 = document.getElementById('img1');
 var img2 = document.getElementById('img2');
@@ -6,6 +9,8 @@ var img3 = document.getElementById('img3');
 
 var imgArr = [];
 var previousImg = [];
+var nameArr = [];
+var dataArr = [];
 var totalClicks = 0;
 //this constuctor function creates objects out of the following variables
 function img(name, itemPath) {
@@ -14,6 +19,7 @@ function img(name, itemPath) {
   this.itemClick = 0;
   this.itemShown = 0;
   imgArr.push(this);
+  nameArr.push(name);
 };
 
 //these variables create new objects through the function constructor
@@ -93,13 +99,33 @@ img2.addEventListener('click', newImages);
 img3.addEventListener('click', newImages);
 
 function imgClicks() {
-  var content = document.getElementsByTagName('main')[0];
-  var ul = document.createElement('ul');
-  content.appendChild(ul);
+  // var content = document.getElementsByTagName('main')[0];
+  // var ul = document.createElement('ul');
+  // content.appendChild(ul);
   for(var i = 0; i < imgArr.length; i++) {
-    var li = document.createElement('li');
-    var dataList = imgArr[i].itemClick + ' clicks for ' + imgArr[i].name;
-    li.innerText = dataList;
-    ul.appendChild(li);
+    var dataList = imgArr[i].itemClick;
+    dataArr.push(dataList);
   }
+  var data = {
+    labels: nameArr,
+    datasets: [{
+      label: '# of Votes',
+      data: dataArr,
+      backgroundColor: 'red',
+    }]
+  };
+  var myChart = new Chart(ctx, {
+    type: 'horizontalBar',
+    data: data,
+    options: {
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero:true
+          }
+        }]
+      }
+    }
+  });
+
 };
