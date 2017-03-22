@@ -7,7 +7,6 @@ var img1 = document.getElementById('img1');
 var img2 = document.getElementById('img2');
 var img3 = document.getElementById('img3');
 
-var newImgArr = [];
 var imgArr = [];
 var previousImg = [];
 var nameArr = [];
@@ -45,7 +44,7 @@ var usb = new img('usb', 'assets/usb.gif');
 var waterCan = new img('water-can', 'assets/water-can.jpg');
 var wineGlass = new img('wine-glass', 'assets/wine-glass.jpg');
 //the random() function generates a random number to bue used in the randomImg() function
-if(localStorage.newImgArr){
+if(localStorage.lclStorageArr){
   var newImgArr = JSON.parse(localStorage.lclStorageArr);
   for(var i = 0; i < newImgArr.length; i++){
     imgArr[i].itemClick += newImgArr[i].itemClick;
@@ -93,6 +92,7 @@ function newImages() {
     imgArr[itemIndx].itemClick++;
   }
   else {
+    localStorage['lclStorageArr'] = JSON.stringify(imgArr);
     img1.removeEventListener('click', newImages);
     img2.removeEventListener('click', newImages);
     img3.removeEventListener('click', newImages);
@@ -100,7 +100,6 @@ function newImages() {
     main.removeChild(img2);
     main.removeChild(img3);
     imgClicks();
-    localStorage.lclStorageArr = JSON.stringify(imgArr);
   }
 };
 
