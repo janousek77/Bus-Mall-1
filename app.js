@@ -7,6 +7,7 @@ var img1 = document.getElementById('img1');
 var img2 = document.getElementById('img2');
 var img3 = document.getElementById('img3');
 
+var newImgArr = [];
 var imgArr = [];
 var previousImg = [];
 var nameArr = [];
@@ -44,6 +45,14 @@ var usb = new img('usb', 'assets/usb.gif');
 var waterCan = new img('water-can', 'assets/water-can.jpg');
 var wineGlass = new img('wine-glass', 'assets/wine-glass.jpg');
 //the random() function generates a random number to bue used in the randomImg() function
+if(localStorage.newImgArr){
+  var newImgArr = JSON.parse(localStorage.lclStorageArr);
+  for(var i = 0; i < newImgArr.length; i++){
+    imgArr[i].itemClick += newImgArr[i].itemClick;
+    imgArr[i].itemShown += newImgArr[i].itemShown;
+  }
+}
+
 function random() {
   return Math.floor(Math.random() * imgArr.length);
 };
@@ -77,7 +86,7 @@ randomImg();
 
 //newImages() is an event listener function that allows the user to click on 1 image, when an image is clicked it pushes that image into selectedImgs array and runs randomImg() function until the attempts reaches the set amount
 function newImages() {
-  if(totalClicks < 24) {
+  if(totalClicks < 4) {
     randomImg();
     totalClicks++;
     var itemIndx = this.alt;
@@ -91,6 +100,7 @@ function newImages() {
     main.removeChild(img2);
     main.removeChild(img3);
     imgClicks();
+    localStorage.lclStorageArr = JSON.stringify(imgArr);
   }
 };
 
@@ -127,5 +137,4 @@ function imgClicks() {
       }
     }
   });
-
 };
